@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Responsive Login Form Design</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--<link rel="stylesheet" href="style.css">-->
+	<style>
+		/* === Google Font ===*/
+		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+		*{
+			margin:0;
+			padding:0;
+			box-sizing: border-box;
+			font-family: 'Poppins', sans-serif;
+		}
+
+		/* === Variables Define ===*/
+		:root{
+			--primary-color:#3525D3;
+			--white-color:#fff;
+			--black-color:#3C4A57; 
+			--light-gray:#E4E8EE;
+		}
+
+/* === Body CSS ===*/
+body{  
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+	background-image:url('../imgs/re.jpg');
+	background-repeat: no-repeat;
+  background-size: cover;}
+}
+
+/* === Main Content CSS ===*/
+.wrapper{
+    padding:50px 25px 0;
+    max-width:668px;
+    width:100%;
+    margin:auto;
+}
+.wrapper::before{
+    content:'';
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-image: url("images/bg-1.svg");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    z-index: -1;
+}
+.wrapper .headline{
+    text-align: center;
+    padding-bottom:48px;
+}
+.wrapper .headline h1{
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 52px;
+}
+.wrapper .form{
+    max-width:350px;
+    width:100%;
+    margin:auto;
+}
+.wrapper .form-group{
+    margin-bottom: 15px;
+}
+.wrapper .form-group input{
+    display:block;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.1px;
+    padding:11px 15px;
+    height:48px;
+    border-radius: 5px;
+    color:var(--black-color);
+    border:1px solid #e4e8ee;
+    box-shadow: none;
+    width:100%;
+}
+.wrapper .form-group input:focus{
+    outline:none;
+}
+.wrapper .form-group input::placeholder{
+    color:var(--black-color);
+    font-weight: 400;
+    font-size: 14px;
+}
+.wrapper .btn{
+    width:100%;
+    margin:15px 0 30px;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 700;
+    padding:12px 29px;
+    height:48px;
+    text-transform: uppercase;
+    color:var(--white-color);
+    background-color: var(--primary-color);
+    border:none;
+    border-radius: 2px;
+    cursor: pointer;
+    text-align: center;
+}
+.wrapper .btn:focus{
+    outline:none;
+}
+.wrapper .account-exist{
+    color:var(--black-color);
+    border-top:1px solid var(--light-gray);
+    padding-top:20px;
+    text-align: center;
+}
+.wrapper .account-exist a{
+    color:var(--primary-color);
+}
+.wrapper .forget-password{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:15px 0;
+}
+.wrapper .forget-password a{
+    color:var(--primary-color);
+}
+.wrapper .forget-password .check-box{
+    font-size: 15px;
+    color:var(--black-color);
+} 
+.signup.inActive{
+    display:none;
+}
+.signin{
+    display:none;
+}
+.signin.active{
+    display:block;
+}
+
+@media (max-width:1030px){
+    .wrapper::before{
+        left:-25%;
+        min-height: 60vh;
+        height:500px;
+    }
+}
+@media (max-width:767px){
+    .wrapper{
+        max-width: 550px;
+    }
+    .wrapper .headline h1{
+        font-size: 22px;
+        line-height:25px;
+    }
+}
+        </style>
+		<script>
+		function validateForm() {
+			let fname = document.forms["myForm"]["firstName"].value;
+			if (fname == "") {
+				alert(" First Name must be filled out");
+				return false;
+			}
+			else if(!(/^[a-zA-Z]+$/.test(fname))) 
+			{ 
+				alert("Please only enter alpha characters");
+				return false;
+			}
+  
+			let lname = document.forms["myForm"]["lastName"].value;
+			if (lname == "") {
+				alert(" Last Name must be filled out");
+				return false;
+			}	
+			else if(!(/^[a-zA-Z]+$/.test(lname)))
+			{ 
+				alert("Please only enter alpha characters"); 
+				return false; 
+			}
+			let address = document.forms["myForm"]["address"].value;
+			if (address == "") {
+				alert(" address must be filled out");
+				return false;
+			}	
+			
+			let number = document.forms["myForm"]["phoneNumber"].value;
+			if (number.length < 10) {
+				alert(" Enter 10 digit");
+				return false;
+			}	
+			else if(!(/^[789][0-9]{9}$/.test(number)))
+			{ 
+			alert("Please enter 10 digit");
+			return false; 
+			}
+
+			let eid = document.forms["myForm"]["email"].value;
+				if (eid == "") {
+				alert(" Enter email id");
+				return false;
+			}	
+			else if(!(/^[A-Za-z_]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/.test(eid))) 
+			{ 
+				alert("Please enter valid format like abc12@gmail.com");
+				return false;
+			}
+			
+			let password = document.forms["myForm"]["password"].value;
+			if (password == "") {
+				alert(" Enter the password");
+				return false;
+			}	
+			else if(!(/^[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password))) 
+			{ 
+				alert("Please enter password in required format (special character,one lowercase,one upper case,1 digit and no less than 8 character)"); 
+				return false;
+			}
+	}
+		</script>
+	</head>
+	<body> 	
+     <div class="wrapper">
+         <div class="headline">
+             <h1 style="color:white;">Client Registration</h1>
+         </div>
+         <form class="form" method="post" action="cookie.html" name="myForm" onclick="return validateForm()">
+            <div class="signup">
+                <div class="form-group">
+					<input id="firstName" type="text" placeholder="First Name" required="" name="fname" >
+                    
+                </div>
+				<div class="form-group">
+                    <input id="lastName" type="text" placeholder="Last name" required="" name="lname" >
+					
+                </div>
+				<div class="form-group">
+                    <input id="address" type="text" placeholder="Address" required="" >
+                </div>
+				<div class="form-group">
+					
+					<input id="phoneNumber" type="number" placeholder="Phone Number" required="" name="number">
+                  
+                </div>
+                <div class="form-group">
+                    <input id="email" type="email" placeholder="Email" required="">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" required="" id= "password">
+                </div>
+                <button onclick="window.parent.storeCookie()" type="submit" class="btn">SIGN UP</button>
+                
+				</div>
+            </div>
+            </div>
+         </form>
+     </div>
+</body>
+</html>
+

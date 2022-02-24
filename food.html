@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--validated-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta charset="UTF-8">
+   <title>An Indian Food</title>
+   <link rel="stylesheet" type="text/css" href="../Css/Mycss.css"/>
+   <script>  
+     function getPlate(namep){
+	   document.getElementById("ptextbox").value = namep;
+	 }
+	  
+     function searchPlateSwitch()
+	 { 
+	   var arrName = ['North','South','East','West'];
+	   var arrLink =["https://en.wikipedia.org/wiki/North_Indian_cuisine","https://en.wikipedia.org/wiki/South_Indian_cuisine","https://en.wikipedia.org/wiki/East_Indian_cuisine","https://en.wikipedia.org/wiki/West_Indian_cuisine"]
+	   var arrDistance = ["style of food","style of food","style of food","style of food"];
+	   var arrImages = ["../imgs/north.jpg","../imgs/south.jpg","../imgs/east.jpg","../imgs/west.jpg"];
+	   var pn = document.getElementById("ptextbox").value.toLowerCase(); 
+
+	   switch (pn){
+		 case "north": 
+		 {  document.getElementById("pname").innerHTML = arrName[0].toUpperCase();
+			document.getElementById("pimg").src = arrImages[0];
+			document.getElementById("plink").href = arrLink[0];
+			document.getElementById("pdetail").innerHTML = "style of food " + arrDistance[0] ;
+			break;
+		 }
+		 case "south": 
+		 {  
+		    document.getElementById("pname").innerHTML = arrName[1];
+			document.getElementById("pimg").src = arrImages[1];
+			document.getElementById("plink").href = arrLink[1];
+			document.getElementById("pdetail").innerHTML = "style of food " + arrDistance[1] ;
+			break;
+			}
+		case "east": 
+		 {
+		    document.getElementById("pname").innerHTML = arrName[2];
+			document.getElementById("pimg").src = arrImages[2];
+			document.getElementById("plink").href = arrLink[2];
+			document.getElementById("pdetail").innerHTML = "style of food " + arrDistance[2] ;		 
+			break;
+		 }
+		 case "west": 
+		 {
+		    document.getElementById("pname").innerHTML = arrName[3];
+			document.getElementById("pimg").src = arrImages[3];
+			document.getElementById("plink").href = arrLink[3];
+			document.getElementById("pdetail").innerHTML = "style of food " + arrDistance[3]  ;		 
+			break;
+		 }
+		 
+		 default :
+		 {
+		    alert('Unknown Food');
+		    document.getElementById("pname").innerHTML = "Unknown";
+			document.getElementById("pimg").src = "";
+			document.getElementById("plink").href = "";
+			document.getElementById("pdetail").innerHTML = "style of food " + 0 ;
+		 }
+        }
+      }
+	  
+     function searchPlateLoop()
+	 { 
+	   var arrName = ['North','South','East','West'];
+	   var arrLink =["https://en.wikipedia.org/wiki/North_Indian_cuisine","https://en.wikipedia.org/wiki/South_Indian_cuisine","https://en.wikipedia.org/wiki/East_Indian_cuisine","https://en.wikipedia.org/wiki/West_Indian_cuisine"]
+	   var arrDistance = ["style of food","style of food","style of food","style of food"];
+	   var arrImages = ["../imgs/north.jpg","../imgs/south.jpg","../imgs/east.jpg","../imgs/west.jpg"];
+	   var pn = document.getElementById("ptextbox").value.toLowerCase(); 
+	   var index = 5;
+	
+		for (i = 0; i < 4; i++)
+		{ 
+		 if (pn == arrName[i])
+		     { index = i; }
+		}
+
+      if (index == 0){
+	   document.getElementById("pname").innerHTML = arrName[0].toUpperCase();
+	   document.getElementById("pimg").src = arrImages[0];
+	   document.getElementById("plink").href = arrLink[0];
+	   document.getElementById("pdetail").innerHTML = "style of food " + arrDistance[0] ;
+	   }
+      else if(index >=1 && index <=4)
+	       {
+	       document.getElementById("pname").innerHTML = arrName[index].toUpperCase();
+           document.getElementById("pimg").src = arrImages[index];
+		   document.getElementById("plink").href = arrLink[index];
+	       document.getElementById("pdetail").innerHTML = "style of food " + arrDistance[index] ;	 
+	       }
+	      else
+		  {
+		      alert('Unknown Food');
+		      document.getElementById("pname").innerHTML = "Unknown";
+			  document.getElementById("pimg").src = "";
+			  document.getElementById("pdetail").innerHTML = "style of food " + 0;
+	      }  
+	 }
+
+   </script>
+ </head>
+	<body id="food">
+		<a name="top"></a>
+			<h1 style="text-align:center;color:blue;">An Indian Food</h1>
+				<div class="plan1" style="border: 2px solid red margin-left;">		
+					<img src="../imgs/img12.jpg" alt="food" usemap="#Food" style="margin-left:500px;" width="30%;"/>
+		
+		<map name="Food">
+			
+			<area target="" alt="" title="" href="#west" coords="20,156,74" shape="circle" onclick="getPlate('West');searchPlateSwitch()"/>
+			<area target="" alt="" title="" href="#north" coords="93,25,74" shape="circle" onclick="getPlate('North');searchPlateSwitch()"/>
+			<area target="" alt="" title="" href="#south" coords="109,266,64" shape="circle" onclick="getPlate('South');searchPlateSwitch()"/>
+			<area target="" alt="" title="" href="#east" coords="217,132,73" shape="circle" onclick="getPlate('East');searchPlateSwitch()"/>
+		</map>
+		
+		<center>
+				<br /><p style="color:gray;">Enter the Food:
+					<input type="text" id="ptextbox"></input></p>
+						<button type="button" onclick="searchPlateSwitch()">Search</button>
+		</center>
+		
+	</div>
+	<br/>
+	
+	<div class="row" class="box">
+			<div class="div_box">
+				<center style="padding-top:20px;">
+					<h1 id="pname" style="color:gray; text-align:center;">Food Name</h1>
+					
+						<h2><a id="plink" href="" target="_blank">Style of Food</a></h2>
+				</center>
+			</div>
+			<div class="div_box">
+					<img id="pimg" src="" alt="image food" width="425" height="190" style="margin:5px;" />
+			</div>
+			<div class="div_box">
+				<br/><br/>
+				<center style="padding-top:20px;">
+				<h3>
+					<a href="#Top">Go to the top</a>
+				</h3>
+			</div>
+			<br /><br /><br /><br />
+
+		</body>
+ </html>
